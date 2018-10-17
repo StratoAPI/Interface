@@ -1,6 +1,6 @@
 package resource
 
-import "github.com/ResourceAPI/Interface/plugins"
+import "github.com/StratoAPI/Interface/plugins"
 
 type Processor interface {
 	// Get the store of a resource

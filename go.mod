@@ -1,1 +1,1 @@
-module github.com/ResourceAPI/Interface
+module github.com/StratoAPI/Interface
