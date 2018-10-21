@@ -60,7 +60,7 @@ type Filter interface {
 	ValidateFilter(filter filter.ProcessedFilter) (bool, error)
 
 	// Create a new instance of the filter
-	CreateFilter(filter string) interface{}
+	CreateFilter(filter string) (interface{}, error)
 }
 
 type Registry interface {
