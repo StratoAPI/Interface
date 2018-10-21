@@ -1,5 +1,9 @@
 package plugins
 
+import (
+	"github.com/StratoAPI/Interface/filter"
+)
+
 type Plugin interface {
 	// The name of the plugin
 	Name() string
@@ -30,16 +34,16 @@ type Storage interface {
 	Stop() error
 
 	// Retrieve resources.
-	GetResources(resource string, filters []interface{}) ([]map[string]interface{}, error)
+	GetResources(resource string, filters []filter.ProcessedFilter) ([]map[string]interface{}, error)
 
 	// Create resources.
 	CreateResources(resource string, data []map[string]interface{}) error
 
 	// Update resources.
-	UpdateResources(resource string, data []map[string]interface{}, filters []interface{}) error
+	UpdateResources(resource string, data []map[string]interface{}, filters []filter.ProcessedFilter) error
 
 	// Delete resources.
-	DeleteResources(resource string, filters []interface{}) error
+	DeleteResources(resource string, filters []filter.ProcessedFilter) error
 }
 
 type Filter interface {
@@ -53,7 +57,10 @@ type Filter interface {
 	Stop() error
 
 	// Validate structure for filter validness
-	ValidateFilter(filter interface{}) (bool, error)
+	ValidateFilter(filter filter.ProcessedFilter) (bool, error)
+
+	// Create a new instance of the filter
+	CreateFilter(filter string) interface{}
 }
 
 type Registry interface {

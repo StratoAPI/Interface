@@ -1,12 +1,13 @@
 package schema
 
 type Processor interface {
-	// Get the store of a resource
+	// Check if a resource schema exists
 	ResourceExists(resource string) bool
 
-	// Get a list of all resources
+	// Check if the resource structure is valid
 	ResourceValid(resource string, data string) (bool, error)
 
+	// Get the schema of a resource
 	GetSchema(resource string) *Schema
 }
 
