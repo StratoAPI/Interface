@@ -32,3 +32,12 @@ type Simple struct {
 	// The filter value
 	Value interface{} `json:"val"`
 }
+
+func (op Operation) Valid() bool {
+	return op == OpEQ ||
+		op == OpNEQ ||
+		op == OpLT ||
+		op == OpLTE ||
+		op == OpGT ||
+		op == OpGTE
+}
