@@ -7,6 +7,9 @@ type Processor interface {
 	// Check if the resource structure is valid
 	ResourceValid(resource string, data string) (bool, error)
 
+	// Check if the resource structure is valid
+	ResourceValidGo(resource string, data interface{}) (bool, error)
+
 	// Get the schema of a resource
 	GetSchema(resource string) *Schema
 }
