@@ -5,10 +5,10 @@ type Processor interface {
 	ResourceExists(resource string) bool
 
 	// Check if the resource structure is valid
-	ResourceValid(resource string, data string) (bool, error)
+	ResourceValid(resource string, data string, required bool) (bool, error)
 
 	// Check if the resource structure is valid
-	ResourceValidGo(resource string, data interface{}) (bool, error)
+	ResourceValidGo(resource string, data interface{}, required bool) (bool, error)
 
 	// Get the schema of a resource
 	GetSchema(resource string) *Schema
