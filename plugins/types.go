@@ -40,7 +40,7 @@ type Storage interface {
 	CreateResources(resource string, data []map[string]interface{}) error
 
 	// Update resources.
-	UpdateResources(resource string, data []map[string]interface{}, filters []filter.ProcessedFilter) error
+	UpdateResources(resource string, data map[string]interface{}, filters []filter.ProcessedFilter) error
 
 	// Delete resources.
 	DeleteResources(resource string, filters []filter.ProcessedFilter) error
