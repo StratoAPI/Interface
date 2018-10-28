@@ -77,12 +77,12 @@ type Middleware interface {
 	// Validate request
 	// If returns nil, it will pass the request onwards
 	// If returns a pointer, request will get replied to with provided response
-	Request(resource string, headers map[string][]string) *middleware.RequestResponse
+	Request(resource string, headers map[string][]string, config interface{}) *middleware.RequestResponse
 
 	// Validate and filter response
 	// If returns nil, it will pass the request onwards with the returned data
 	// If returns a pointer, request will get replied to with provided response without data
-	Response(resource string, headers map[string][]string, data []map[string]interface{}) ([]map[string]interface{}, *middleware.RequestResponse)
+	Response(resource string, headers map[string][]string, data []map[string]interface{}, config interface{}) ([]map[string]interface{}, *middleware.RequestResponse)
 }
 
 type Registry interface {

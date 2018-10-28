@@ -19,7 +19,13 @@ type Schema struct {
 	Meta   ResourceMeta
 }
 
+type MiddlewareMeta struct {
+	Type string      `json:"type"`
+	Data interface{} `json:"data"`
+}
+
 type ResourceMeta struct {
-	Resource string `json:"resource"`
-	Store    string `json:"store"`
+	Resource    string           `json:"resource"`
+	Store       string           `json:"store"`
+	Middlewares []MiddlewareMeta `json:"middlewares"`
 }
