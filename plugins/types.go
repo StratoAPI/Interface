@@ -2,6 +2,7 @@ package plugins
 
 import (
 	"github.com/StratoAPI/Interface/filter"
+	"github.com/StratoAPI/Interface/middleware"
 )
 
 type Plugin interface {
@@ -61,6 +62,27 @@ type Filter interface {
 
 	// Create a new instance of the filter
 	CreateFilter(filter string) (interface{}, error)
+}
+
+type Middleware interface {
+	// Initialize the middleware.
+	Initialize() error
+
+	// Start the middleware. Does not have to be blocking.
+	Start() error
+
+	// Graceful stopping of the middleware with a 30s timeout.
+	Stop() error
+
+	// Validate request
+	// If returns nil, it will pass the request onwards
+	// If returns a pointer, request will get replied to with provided response
+	Request(resource string, headers map[string][]string) *middleware.RequestResponse
+
+	// Validate and filter response
+	// If returns nil, it will pass the request onwards with the returned data
+	// If returns a pointer, request will get replied to with provided response without data
+	Response(resource string, headers map[string][]string, data []map[string]interface{}) ([]map[string]interface{}, *middleware.RequestResponse)
 }
 
 type Registry interface {
