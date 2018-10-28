@@ -95,6 +95,9 @@ type Registry interface {
 	// Register a filter
 	RegisterFilter(name string, filter Filter) error
 
+	// Register a middleware
+	RegisterMiddleware(name string, filter Middleware) error
+
 	// Associate a filter with a store
 	AssociateFilter(filter string, storage string) error
 }
