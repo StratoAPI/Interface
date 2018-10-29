@@ -85,6 +85,14 @@ type Middleware interface {
 	Response(resource string, headers map[string][]string, data []map[string]interface{}, config interface{}) ([]map[string]interface{}, *middleware.RequestResponse)
 }
 
+type Config interface {
+	// Create the config struct.
+	CreateStructure() interface{}
+
+	// Set the config.
+	Set(config interface{})
+}
+
 type Registry interface {
 	// Register a facade
 	RegisterFacade(name string, facade Facade) error
@@ -97,6 +105,9 @@ type Registry interface {
 
 	// Register a middleware
 	RegisterMiddleware(name string, filter Middleware) error
+
+	// Register a config
+	RegisterConfig(name string, config Config) error
 
 	// Associate a filter with a store
 	AssociateFilter(filter string, storage string) error
